@@ -1,0 +1,115 @@
+<Lorenzo>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convite Padrinhos</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #cce7ff url('https://i.ibb.co/6wLk7hF/teddy-bg.png') repeat;
+        background-size: 80px;
+        font-family: 'Arial', sans-serif;
+        overflow: hidden;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        position: relative;
+    }
+
+    .letter {
+        width: 90%;
+        max-width: 500px;
+        background: #fff; /* Fundo branco */
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        forwards;
+        animation-delay: 1s;
+        position: relative;
+        z-index: 2;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    @keyframes showLetter {
+        from { opacity: 0; transform: translateY(50px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Corações animados subindo */
+    .heart {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: red;
+        clip-path: polygon(50% 0%, 61% 13%, 75% 13%, 88% 25%, 88% 38%, 75% 50%, 50% 75%, 25% 50%, 12% 38%, 12% 25%, 25% 13%, 39% 13%);
+        animation: floatHearts 6s linear infinite;
+    }
+
+    @keyframes floatHearts {
+        0% { transform: translateY(0) scale(1); opacity: 1; }
+        100% { transform: translateY(-600px) scale(1.5); opacity: 0; }
+    }
+
+    /* Corações fixos ao redor da carta */
+    .fixed-heart {
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        background: #ff69b4;
+        clip-path: polygon(50% 0%, 61% 13%, 75% 13%, 88% 25%, 88% 38%, 75% 50%, 50% 75%, 25% 50%, 12% 38%, 12% 25%, 25% 13%, 39% 13%);
+        z-index: 1;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <!-- Corações fixos ao redor -->
+    <div class="fixed-heart" style="top: 15%; left: 15%;"></div>
+    <div class="fixed-heart" style="top: 10%; left: 50%;"></div>
+    <div class="fixed-heart" style="top: 15%; right: 15%;"></div>
+    <div class="fixed-heart" style="bottom: 20%; left: 20%;"></div>
+    <div class="fixed-heart" style="bottom: 15%; right: 20%;"></div>
+
+    <!-- Carta -->
+    <div class="letter">
+        <p><strong>Madrinha e Padrinho,</strong></p>
+        <p>Desde a minha chegada nesse mundo, papai e mamãe me contaram que existem pessoas especiais e muito importantes perto da gente.
+        E vocês por serem tão presentes em minha vida, eles disseram que serão referência para me guiar na vida e na fé.</p>
+        <p><strong>Aceitam ser meus padrinhos?</strong></p>
+        <p>Nós ganhamos o maior presente que Deus poderia nos dar e por todo amor e confiança que temos em vocês decidimos entregar para vossos corações nosso bem mais precioso.
+        Nós temos absoluta certeza do amor e da proteção que terão com nosso filho.</p>
+        <p>Com carinho,<br>M.Eduarda &amp; Gabriel</p>
+    </div>
+</div>
+
+<script>
+    // Função para criar corações animados
+    function criarCoracoes(qtd) {
+        for (let i = 0; i < qtd; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.bottom = '0px';
+            heart.style.background = ['#ff0000', '#ff69b4', '#ff1493'][Math.floor(Math.random() * 3)];
+            document.body.appendChild(heart);
+
+            // Remove coração após animação para não sobrecarregar
+            setTimeout(() => heart.remove(), 6000);
+        }
+    }
+
+    // Primeira leva após 2 segundos
+    setTimeout(() => criarCoracoes(40), 2000);
+
+    // Criar corações continuamente a cada 1.5 segundos
+    setInterval(() => criarCoracoes(20), 1500);
+</script>
+</body>
+</html>
